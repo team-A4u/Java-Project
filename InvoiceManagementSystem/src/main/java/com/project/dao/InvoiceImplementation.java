@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ public class InvoiceImplementation implements InvoiceInterface {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	
 	@Override
 	@Transactional
 	public void setupDB()
@@ -20,24 +23,16 @@ public class InvoiceImplementation implements InvoiceInterface {
 		jdbcTemplate.execute("DROP table IF EXISTS invoice;");
 		jdbcTemplate.execute("CREATE table invoice (invoiceId SERIAL ,orderId INT,productId INT, productName INT,productPriceINT, status BOOLEAN )");
 	}
+	
 	@Transactional
 	@Override
-	public void createInvoice(int orderId, int productId, String productName, int productPrice,
-			boolean status) {
-		String sql = "insert into invoice (orderId,productId,productName,productPrice,status) values (?,?,?,?,?)";
-		jdbcTemplate.update(sql,orderId,productId,productName,productPrice,status);
+	public void createInvoice(int orderId, int productId, String productName, int productPrice,boolean status,Date orderDate) {
+		String sql = "insert into invoice (orderId,productId,productName,productPrice,status,orderDate) values (?,?,?,?,?,?)";
+		jdbcTemplate.update(sql,orderId,productId,productName,productPrice,status, orderDate);
 		
 	}
 	
-	@Transactional
-	private void createInvoice(int invoiceId, int orderId, int productId, String productName, int productPrice,
-			 boolean status) {
-		String sql = "insert into invoice (invoiceId,orderId,productId,productName,productPrice,status) values (?,?,?,?,?,?)";
-		jdbcTemplate.update(sql,invoiceId,orderId,productId,productName,productPrice,status);
-		
-		
-	}
-
+	
 	@Override
 	public List<Invoice> getInvoice(int orderId) {
 		
@@ -47,10 +42,9 @@ public class InvoiceImplementation implements InvoiceInterface {
 	}
 	@Transactional
 	@Override
-	public void updateInvoiceAddProduct(int orderId,int productId,String productName,int productPrice, boolean status) {
-		//String sql1 = "select invoiceId from invoice where orderId = ? limit 1";
-		//int invoiceId =  jdbcTemplate.queryForObject(sql1, new Object[]{orderId}, Integer.class);
-		createInvoice(orderId,productId,productName,productPrice,false);
+	public void updateInvoiceAddProduct(int orderId,int productId,String productName,int productPrice, boolean status,Date orderDate) {
+	
+		createInvoice(orderId,productId, productName,productPrice,false,orderDate);
 	
 		
 	}

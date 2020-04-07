@@ -7,14 +7,15 @@ import org.springframework.context.ApplicationContext;
 
 import com.project.dao.InvoiceImplementation;
 import com.project.dao.InvoiceInterface;
+
 @EnableDiscoveryClient
 @SpringBootApplication
 
-public class CustomerManagementSystemApplication {
+public class InvoiceManagementSystemApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctc = SpringApplication.run(AppConfiguration.class, args);
-		InvoiceInterface obj = ctc.getBean(InvoiceImplementation.class);
+		//InvoiceInterface obj = ctc.getBean(InvoiceImplementation.class);
 		//obj.createInvoice(101, 111, "mobile", 15000,false);
 	}
 

@@ -1,5 +1,7 @@
 package com.project.rest;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +30,10 @@ public class InvoiceController {
 	
 	
 	@RequestMapping(value = "/createInvoice",method = RequestMethod.POST)
-	public void createInvoice(@RequestParam ("orderId") int orderId , @RequestParam("productId") int productId,@RequestParam("productName") String productName,
-			@RequestParam("productPrice") int productPrice)
+	public void createInvoice(@RequestParam  int orderId , @RequestParam int productId,@RequestParam String productName,
+			@RequestParam int productPrice,@RequestParam Date orderDate)
 	{
-		objInvoiceService.createInvoice(orderId,productId,productName,productPrice);
+		objInvoiceService.createInvoice(orderId,productId,productName,productPrice,orderDate);
 		
 		
 	}
@@ -43,10 +45,10 @@ public class InvoiceController {
 	}
 	
 	@RequestMapping(value = "/updateInvoiceAddProduct/{orderId}/addProduct",method = RequestMethod.PUT)
-	public void updateInvoice(@PathVariable ("orderId")int orderId,@RequestParam("productId")int productId,@RequestParam ("productName")String productName,
-			@RequestParam("productPrice")int productPrice)
+	public void updateInvoice(@PathVariable ("orderId")int orderId,@RequestParam int productId,@RequestParam String productName,
+			@RequestParam int productPrice,@RequestParam Date orderDate)
 	{
-		objInvoiceService.updateInvoiceAddProduct(orderId,productId,productName,productPrice);
+		objInvoiceService.updateInvoiceAddProduct(orderId,productId,productName,productPrice,orderDate);
 	}
 	
 	@RequestMapping(value="/updateInvoiceDeleteProduct/orderId/{orderId}/productId/{productId}",method = RequestMethod.PUT)

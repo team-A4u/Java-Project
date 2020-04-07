@@ -19,6 +19,7 @@ public class InvoiceRowMapper implements RowMapper<Invoice> {
 		obj.setProductPrice(rs.getInt("productPrice"));
 		//obj.setAmount(rs.getInt("amount"));
 		obj.setStatus(rs.getBoolean("status"));
+		obj.setOrderDate(rs.getDate("orderDate"));
 		return obj;
 	}
 

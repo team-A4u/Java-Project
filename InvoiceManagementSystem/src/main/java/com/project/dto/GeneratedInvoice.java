@@ -1,26 +1,27 @@
 package com.project.dto;
 
-import java.util.HashMap;
+import java.sql.Date;
+import java.util.List;
 
 public class GeneratedInvoice {
 
 	int invoiceId;
 	int orderId;
-	String date;
-	HashMap<String,Integer> products;
-	int totalamount;
+	Date date;
+	List<ProductHelper> products;
+	int totalAmount;
 	boolean status;
 	public GeneratedInvoice() {
 		
 	}
-	public GeneratedInvoice(int invoiceId, int orderId, String date, HashMap<String, Integer> products, int totalamount,
+	public GeneratedInvoice(int invoiceId, int orderId,Date date, List<ProductHelper> products, int totalAmount,
 			boolean status) {
 		super();
 		this.invoiceId = invoiceId;
 		this.orderId = orderId;
 		this.date = date;
 		this.products = products;
-		this.totalamount = totalamount;
+		this.totalAmount = totalAmount;
 		this.status = status;
 	}
 	public int getInvoiceId() {
@@ -35,23 +36,23 @@ public class GeneratedInvoice {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-	public HashMap<String, Integer> getProducts() {
+	public List<ProductHelper> getProducts() {
 		return products;
 	}
-	public void setProducts(HashMap<String, Integer> products) {
+	public void setProducts(List<ProductHelper> products) {
 		this.products = products;
 	}
-	public int getTotalamount() {
-		return totalamount;
+	public int getTotalAmount() {
+		return totalAmount;
 	}
-	public void setTotalamount(int totalamount) {
-		this.totalamount = totalamount;
+	public void setTotalAmount(int totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 	public boolean isStatus() {
 		return status;
@@ -62,7 +63,7 @@ public class GeneratedInvoice {
 	@Override
 	public String toString() {
 		return "GeneratedInvoice [invoiceId=" + invoiceId + ", orderId=" + orderId + ", date=" + date + ", products="
-				+ products + ", totalamount=" + totalamount + ", status=" + status + "]";
+				+ products + ", totalamount=" + totalAmount + ", status=" + status + "]";
 	}
 	
 }

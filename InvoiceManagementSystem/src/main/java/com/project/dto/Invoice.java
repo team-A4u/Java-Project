@@ -1,13 +1,54 @@
 package com.project.dto;
 
+import java.util.Date;
+
 public class Invoice {
 
 	private int invoiceId;
+	private Date orderDate;
+
+
 	private int orderId;
 	private int productId;
 	private String productName;
 	private int productPrice;
+	private boolean status;
+	
+	
+	
+
+
+
+
+
+	public Invoice(int invoiceId, Date orderDate, int orderId, int productId, String productName, int productPrice,
+			boolean status) {
+		super();
+		this.invoiceId = invoiceId;
+		this.orderDate = orderDate;
+		this.orderId = orderId;
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.status = status;
+	}
+
+
+
+
 	//private int amount;
+	
+	
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+
+
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -47,18 +88,7 @@ public class Invoice {
 		this.productPrice = productPrice;
 	}
 
-	private boolean status;
-	public Invoice(int invoiceId, int orderId, int productId, String productName, int productPrice, /*int amount,*/
-			boolean status) {
-		super();
-		this.invoiceId = invoiceId;
-		this.orderId = orderId;
-		this.productId = productId;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		//this.amount = amount;
-		this.status = status;
-	}
+	
 
 	
 	
@@ -100,12 +130,12 @@ public class Invoice {
 		this.status = status;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Invoice [invoiceId=" + invoiceId + ", orderId=" + orderId + ", status=" + status
+		return "Invoice [invoiceId=" + invoiceId + ", orderDate=" + orderDate + ", orderId=" + orderId + ", productId="
+				+ productId + ", productName=" + productName + ", productPrice=" + productPrice + ", status=" + status
 				+ "]";
 	}
-	
-	
 	
 }
